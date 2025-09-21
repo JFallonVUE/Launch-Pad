@@ -1,0 +1,11 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "title":"Export Request",
+  "type":"object",
+  "required":["intake_id","chosen_tier","chosen_bias_key"],
+  "properties":{
+    "intake_id":{"type":"string"},
+    "chosen_tier":{"enum":["High","Medium","Low"]},
+    "chosen_bias_key":{"type":"string"}
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "title":"Stacks Output",
+  "type":"array",
+  "items":{
+    "type":"object",
+    "required":["tier","services","rationale"],
+    "properties":{
+      "tier":{"enum":["High","Medium","Low"]},
+      "services":{"type":"array","items":{"type":"object","required":["service_id","name","rationale"]}},
+      "rationale":{"type":"string"}
+    }
+  }
+}

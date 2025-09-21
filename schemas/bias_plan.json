@@ -1,0 +1,16 @@
+{
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "title":"Bias Mini Plans",
+  "type":"array",
+  "items":{
+    "type":"object",
+    "required":["key","name","definition","why","executionBullets"],
+    "properties":{
+      "key":{"type":"string"},
+      "name":{"type":"string"},
+      "definition":{"type":"string"},
+      "why":{"type":"string"},
+      "executionBullets":{"type":"array","items":{"type":"string"}, "minItems":2, "maxItems":3}
+    }
+  }
+}
