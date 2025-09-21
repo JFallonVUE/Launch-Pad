@@ -1,0 +1,33 @@
+app = "launch-pad-4bf43a"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  EXPORT_DIR = "/app/exports"     # matches app/config.py default
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 8000            # MUST match uvicorn --port
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [services.concurrency]
+    type = "requests"
+    soft_limit = 20
+    hard_limit = 25
+
+  [[services.http_checks]]        # health probe
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "30s"
+    method = "get"
+    path = "/healthz"
+    protocol = "http"
+    tls_skip_verify = false
