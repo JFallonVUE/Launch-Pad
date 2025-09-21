@@ -6,6 +6,12 @@ from app.routers import intake, export, admin
 
 app = FastAPI(title="LaunchPad AI Decision Engine", version="1.0.0")
 
+from fastapi.staticfiles import StaticFiles
+from app.config import settings
+
+# ...
+app.mount("/exports", StaticFiles(directory=settings.EXPORT_DIR), name="exports")
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_allow_origins,
